@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.jeeplus</groupId>
+	<groupId>com.easyorder</groupId>
 	<artifactId>console</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>console</name>
+	<name>easyorder</name>
 
 	<!-- 项目属性 -->
 	<properties>
@@ -56,7 +56,7 @@
 
 
 	<build>
-		<finalName>console</finalName>
+		<finalName>easyorder</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

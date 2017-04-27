@@ -1,4 +1,4 @@
-USE CONSOLE;
+USE easyorder;
 
 DROP TABLE IF EXISTS `calendar`;
 
