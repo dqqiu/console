@@ -50,6 +50,10 @@ public class CloudStorageUtil implements Closeable {
   private OSSClient ossClient = null;
   private String endpoint = null;
   private String accessKeyId = null;
+  
+  public OSSClient getClient() {
+	  return ossClient;
+  }
 
   /**
    * @param endpoint 云节点地址：北京oss-cn-beijing.aliyuncs.com

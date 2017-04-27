@@ -24,6 +24,7 @@
 				    yes: function(index, layero){
 				    	 var body = top.layer.getChildFrame('body', index);
 				         var inputForm = body.find('#inputForm');
+				         inputForm = $(inputForm);
 				         var btn = body.find('#btnSubmit');
 				         var top_iframe = top.getActiveTab().attr("name");//获取当前active的tab的iframe 
 				         inputForm.attr("target",top_iframe);//表单提交成功后，从服务器返回的url在当前tab中展示
@@ -75,8 +76,23 @@
 				         var inputForm = body.find('#inputForm');
 				         var top_iframe = top.getActiveTab().attr("name");//获取当前active的tab的iframe 
 				         inputForm.attr("target",top_iframe);//表单提交成功后，从服务器返回的url在当前tab中展示
-				         inputForm.validate();
-				         if(inputForm.valid()){
+				         $(inputForm).validate({
+				        	 submitHandler: function(form){
+									loading('正在提交，请稍等...');
+									form.submit();
+									
+								},
+								errorContainer: "#messageBox",
+								errorPlacement: function(error, element) {
+									$("#messageBox").text("输入有误，请先更正。");
+									if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+										error.appendTo(element.parent().parent());
+									} else {
+										error.insertAfter(element);
+									}
+								}
+				         });
+				         if($(inputForm).valid()){
 				        	  loading("正在提交，请稍等...");
 				        	  inputForm.submit();
 				          }else{

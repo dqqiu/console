@@ -35,6 +35,7 @@ import com.jeeplus.common.web.BaseController;
 import com.jeeplus.modules.iim.entity.MailBox;
 import com.jeeplus.modules.iim.entity.MailPage;
 import com.jeeplus.modules.iim.service.MailBoxService;
+import com.jeeplus.modules.sys.entity.User;
 import com.jeeplus.modules.sys.security.FormAuthenticationFilter;
 import com.jeeplus.modules.sys.security.SystemAuthorizingRealm.Principal;
 import com.jeeplus.modules.sys.utils.UserUtils;
@@ -323,7 +324,8 @@ public class LoginController extends BaseController {
   @RequestMapping(value = "${adminPath}/home")
   public String home(HttpServletRequest request, HttpServletResponse response, Model model)
       throws IOException {
-
+	User user = UserUtils.getUser();
+	model.addAttribute("user", user);
     return "modules/sys/sysHome";
 
   }

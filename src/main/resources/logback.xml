@@ -49,7 +49,7 @@
 	<logger name="org.springframework.web" level="WARN" />
 	<logger name="org.mybatis" level="WARN" />
 	<logger name="com.github.abel533" level="DEBUG" />
-	<logger name="com.ljt" level="DEBUG" />
+	<logger name="com.easyorder" level="DEBUG" />
 	
 	<root level="WARN">
 		<appender-ref ref="STDOUT" />

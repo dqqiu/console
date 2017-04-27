@@ -35,11 +35,61 @@
 		<link rel="stylesheet" href="${ctxStatic }/common/login/ace-rtl.css" />
 		<style type="text/css">
 		
-			.bound{
-			    background-color: white;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 40px;
-    }
+			.login-container {
+				width: 320px;
+				min-width: 320px;
+				margin: 160px auto 0;
+			}
+			.bound {
+			    background-color: #fff;
+			    border-radius: 10px;
+			}
+			
+			.marginB-10 {
+				margin-bottom: 10px;
+			}
+			
+			.marginT-10 {
+				margin-top: 10px;
+			}
+			
+			.login-layout .widget-box .widget-main {
+				background: #fff;
+				padding: 0 30px 30px;
+			}
+			
+			.login-layout label {
+				margin-bottom: 15px;
+			}
+			
+			.login-header {
+				height: 50px;
+				line-height: 50px;
+				background-color: #428bca;
+				border-radius: 10px 10px 0 0;
+				margin-bottom: 20px;
+			}
+			
+			.forgot-header {
+				background-color: #d15b47 !important;
+			}
+			
+			.signup-header {
+				background-color: #87b87f !important;
+			}
+			
+			.login-header h1 {
+				line-height: 50px;
+				text-align: center;
+				font-size: 26px;
+				margin: 0;
+				color: #fff;
+			}
+			
+			.btn,.btn:hover {
+				border: none;
+				padding: 8px 9px;
+			}
 		</style>
 		<title>${fns:getConfig('productName')} 登录</title>
 		<script>
@@ -228,13 +278,6 @@
 						<div class="login-container">
 							
 							<div class="center">
-								<h1>
-									<br/>
-									<img src="${ctxStatic }/common/login/images/logo.png" style="width:280px">
-									<br>
-								</h1>
-								
-								
 								<sys:message content="${message}"/>
 							</div>
 
@@ -243,14 +286,18 @@
 							<div class="position-relative">
 								<div id="login-box" class="login-box visible widget-box no-border bound">
 									<div class="widget-body bound">
+										<div class="login-header">
+											<h1>
+												<i class="fa fa-opencart"></i> 订货系统
+											</h1>
+										</div>
 										<div class="widget-main bound">
 											<h4 class="header blue lighter bigger">
-												<i class="ace-icon fa fa-coffee green"></i>
+												<i class="ace-icon fa fa-user green"></i>
 												用户登录
 											</h4>
-
 											<div class="space-6"></div>
-
+	
 											<form id="loginForm" class="form-signin" action="${ctx}/login" method="post">
 												<fieldset>
 													<label class="block clearfix">
@@ -275,64 +322,43 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<label class="inline">
+														<label class="inline pull-left">
 															<input  type="checkbox" id="rememberMe" name="rememberMe" ${rememberMe ? 'checked' : ''} class="ace" />
 															<span class="lbl"> 记住我</span>
 														</label>
-
-														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110">登录</span>
-														</button>
-													</div>
-
-													<div class="space-4"></div>
-														<div id="themeSwitch" class="dropdown">
+														
+														<div id="themeSwitch" class="dropdown pull-right">
 															<a class="dropdown-toggle" data-toggle="dropdown" href="#">${fns:getDictLabel(cookie.theme.value,'theme','默认主题')}<b class="caret"></b></a>
 															<ul class="dropdown-menu">
 															  <c:forEach items="${fns:getDictList('theme')}" var="dict"><li><a href="#" onclick="location='${pageContext.request.contextPath}/theme/${dict.value}?url='+location.href"><font color="black">${dict.label}</font></a></li></c:forEach>
 															</ul>
 															<!--[if lte IE 6]><script type="text/javascript">$('#themeSwitch').hide();</script><![endif]-->
 														</div>
+													</div>
+													<div class="login-btn marginB-10 clearfix">
+														<button type="submit" class="btn btn-sm btn-primary col-md-12">
+															<i class="ace-icon fa fa-sign-in"></i>
+															<span class="bigger-110">登录</span>
+														</button>
+													</div>
 												</fieldset>
 											</form>
-											<!--  
-											<div class="social-or-login center">
-												<span class="bigger-110">Or Login Using</span>
-											</div>
-
-											<div class="space-6"></div>
-
-											<div class="social-login center">
-												<a class="btn btn-primary">
-													<i class="ace-icon fa fa-facebook"></i>
-												</a>
-
-												<a class="btn btn-info">
-													<i class="ace-icon fa fa-twitter"></i>
-												</a>
-
-												<a class="btn btn-danger">
-													<i class="ace-icon fa fa-google-plus"></i>
-												</a>
-											</div>
-											-->
-											<br/>
-											<br/>
+											<br>
 											<div class="form-options clearfix">
 											<div>
 												<a href="#" data-target="#forgot-box" class="pull-left">
-													<font color=" #007aff;"><i class="ace-icon fa fa-arrow-left"></i>
+													<font color=" #007aff;"><i class="ace-icon fa fa-hand-o-right"></i>
 													忘记密码</font> 
 												</a>
 											</div>
-
-											<div>
+											
+											<!-- 屏蔽注册功能 -->
+											<!-- <div>
 												<a href="#" data-target="#signup-box" class="pull-right user-signup-link">
 													<font color=" #A73438">没有账号？注册 
 													<i class="ace-icon fa fa-arrow-right"></i></font>
 												</a>
-											</div>
+											</div> -->
 										</div>
 										</div><!-- /.widget-main -->
 
@@ -342,6 +368,11 @@
 
 								<div id="forgot-box" class="forgot-box widget-box no-border bound">
 									<div class="widget-body bound">
+										<div class="login-header forgot-header">
+											<h1>
+												<i class="fa fa-opencart"></i> 订货系统
+											</h1>
+										</div>
 										<div class="widget-main bound">
 											<h4 class="header red lighter bigger">
 												<i class="ace-icon fa fa-key"></i>
@@ -350,7 +381,7 @@
 
 											<div class="space-6"></div>
 											<p>
-												请输入您的注册手机号，您将会收到新的密码。
+												请输入您绑定的手机号，您将会收到新的密码。
 											</p>
 
 											<form id="resetForm">
@@ -363,9 +394,9 @@
 													</label>
 
 													<div class="clearfix">
-														<button id="sendPassBtn" type="button" class="width-35 pull-right btn btn-sm btn-danger">
+														<button id="sendPassBtn" type="button" class="btn btn-sm btn-danger col-md-12">
 															<i class="ace-icon fa fa-lightbulb-o"></i>
-															<span class="bigger-110">发送!</span>
+															<span class="bigger-110">发送</span>
 														</button>
 													</div>
 												</fieldset>
@@ -384,8 +415,13 @@
 									</div><!-- /.widget-body -->
 								</div><!-- /.forgot-box -->
 
-								<div id="signup-box" class="signup-box widget-box no-border bound">
+								<%-- <div id="signup-box" class="signup-box widget-box no-border bound">
 									<div class="widget-body bound">
+										<div class="login-header signup-header">
+											<h1>
+												<i class="fa fa-opencart"></i> 订货系统
+											</h1>
+										</div>
 										<div class="widget-main bound">
 											<h4 class="header green lighter bigger">
 												<i class="ace-icon fa fa-users blue"></i>
@@ -404,10 +440,10 @@
 													</label>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input id="code" name="randomCode" type="text" value="" maxlength="4" minlength="4" class="required"  placeholder="验证码"/>
-															<button class="width-40 pull-right btn btn-sm btn-primary" type="button" id="sendCodeBtn"  >
+															<input id="code" name="randomCode" type="text" value="" maxlength="4" minlength="4" class="required col-md-6 pull-left col-xs-6"  placeholder="验证码"/>
+															<button class="pull-right btn btn-sm btn-primary col-xs-6 col-md-6 width-40" type="button" id="sendCodeBtn"  >
 																<i class="ace-icon fa fa-lightbulb-o"></i>
-																<span class="bigger-110">获取验证码!</span>
+																<span class="">获取验证码</span>
 															</button>
 															<label id="code-error" class="error" for="code" style="display:none"></label>
 														</span>
@@ -471,9 +507,8 @@
 
 										
 									</div><!-- /.widget-body -->
-								</div><!-- /.signup-box -->
+								</div><!-- /.signup-box --> --%>
 							</div><!-- /.position-relative -->
-							<div class="center"><h4 id="id-company-text"><font color="#A90E0E">&copy; www.lianjintai.com</font></h4></div>
 				
 						</div>
 					</div><!-- /.col -->

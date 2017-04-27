@@ -62,16 +62,16 @@
                                 </li>
                                 <li><a class="J_menuItem" href="${ctx }/iim/mailBox/list">信箱</a>
                                 </li> 
-                                 <li class="divider"></li>
+                                 <!-- <li class="divider"></li>
                                 <li><a onclick="changeStyle()" href="#">切换到ACE模式</a>
-                                </li> 
+                                </li>  -->
                                  
                                 <li class="divider"></li>
                                 <li><a href="${ctx}/logout">安全退出</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="logo-element">JP
+                        <div class="logo-element">订
                         </div>
                     </li>
      

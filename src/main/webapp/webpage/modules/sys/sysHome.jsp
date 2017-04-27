@@ -11,6 +11,8 @@
 	</script>
 </head>
 <body class="gray-bg">
-	
+	<div class="wrapper wrapper-content">
+		<h4>${user.name}，欢迎您使用订货管理系统</h4>
+	</div>
 </body>
 </html>
