@@ -1,6 +1,6 @@
 package com.easyorder.modules.entity;
 
-import com.easyorder.common.EasyOrderDataEntity;
+import com.easyorder.common.entity.EasyOrderDataEntity;
 import com.jeeplus.common.utils.excel.annotation.ExcelField;
 
 /**

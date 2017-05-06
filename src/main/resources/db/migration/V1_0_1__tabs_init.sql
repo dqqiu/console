@@ -154,15 +154,6 @@ CREATE TABLE `group_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='群组成员';
 
-
-INSERT INTO `group_user` (`id`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`, `user_id`, `group_id`)
-VALUES
-	('5cb2c16780794b278895b944a9518a85',NULL,NULL,NULL,NULL,NULL,'0','7374fe91d19a4b739ae649334c0cc273','cfe08f3e009e4232bedf05a937004684'),
-	('6faa3ab0513f4bedba242076268f8d28',NULL,NULL,NULL,NULL,NULL,'0','f7cc1c7e6f494818adffe1de5f2282fb','cfe08f3e009e4232bedf05a937004684'),
-	('70d7c6c5335e4cdba1ce3f42a5155e8d',NULL,NULL,NULL,NULL,NULL,'0','1e8149b33e774daa9a250f5a1a0ad23f','cfe08f3e009e4232bedf05a937004684'),
-	('bc924fe330cd47c080e1410e298d8bac',NULL,NULL,NULL,NULL,NULL,'0','0fb8ebbff20a46029596806aa077d3c2','cfe08f3e009e4232bedf05a937004684');
-
-
 DROP TABLE IF EXISTS `iim_chat_history`;
 
 CREATE TABLE `iim_chat_history` (
@@ -229,7 +220,7 @@ CREATE TABLE `monitor` (
 
 INSERT INTO `monitor` (`id`, `cpu`, `jvm`, `ram`, `toemail`)
 VALUES
-	('1','99','99','99','117575171@qq.com');
+	('1','99','99','99','qiudequan624@163.com');
 
 DROP TABLE IF EXISTS `sys_area`;
 
@@ -1015,33 +1006,6 @@ CREATE TABLE `t_group` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='群组';
 
-
-INSERT INTO `t_group` (`id`, `groupname`, `avatar`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`)
-VALUES
-	('cfe08f3e009e4232bedf05a937004684','test','','1','2016-10-06 21:01:43','1','2016-10-06 21:01:43','','0');
-
-
-DROP TABLE IF EXISTS `test_data`;
-
-CREATE TABLE `test_data` (
-  `id` varchar(64) NOT NULL COMMENT '编号',
-  `user_id` varchar(64) DEFAULT NULL COMMENT '归属用户',
-  `office_id` varchar(64) DEFAULT NULL COMMENT '归属部门',
-  `area_id` varchar(64) DEFAULT NULL COMMENT '归属区域',
-  `name` varchar(100) DEFAULT NULL COMMENT '名称',
-  `sex` char(1) DEFAULT NULL COMMENT '性别',
-  `in_date` date DEFAULT NULL COMMENT '加入日期',
-  `create_by` varchar(64) NOT NULL COMMENT '创建者',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
-  `update_by` varchar(64) NOT NULL COMMENT '更新者',
-  `update_date` datetime NOT NULL COMMENT '更新时间',
-  `remarks` varchar(255) DEFAULT NULL COMMENT '备注信息',
-  `del_flag` char(1) NOT NULL DEFAULT '0' COMMENT '删除标记',
-  PRIMARY KEY (`id`),
-  KEY `test_data_del_flag` (`del_flag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='业务数据表';
-
-
 DROP TABLE IF EXISTS `test_interface`;
 
 CREATE TABLE `test_interface` (
@@ -1056,73 +1020,3 @@ CREATE TABLE `test_interface` (
   `name` varchar(1024) DEFAULT NULL COMMENT '接口名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接口列表';
-
-
-INSERT INTO `test_interface` (`id`, `type`, `url`, `body`, `successmsg`, `errormsg`, `remarks`, `del_flag`, `name`)
-VALUES
-	('02c5ad21ab604baba5aaa9795815d769','post','http://localhost:8080/jeeplus/a/sys/user/infoEdit;JSESSIONID=21a65e45a78f415c9c21f9376df9c1d3?__ajax=true&amp;mobileLogin=true','name=lily&amp;email=117575171@qq.com&amp;phone=025-83191633&amp;mobile=18951655371&amp;remarks=备注信息','','','调用该接口请先登录','0','完善用户信息'),
-	('0bd7170af4b94464ad3dbfa4d8d2dd5d','post','http://localhost:8080/jeeplus/a/iim/contact/addFriend;JSESSIONID=21a65e45a78f415c9c21f9376df9c1d3?__ajax','friendName=用户登录名','','','','0','添加常用联系人'),
-	('35a8a587b68a4996b935ab7feefdcb13','post','http://localhost:8080/jeeplus/a/sys/register/registerUser','mobileLogin=true&amp;loginName=thinkgem1&amp;roleName=system&amp;password=fnst1234&amp;mobile=18951655371&amp;randomCode=1234','{&quot;success&quot;:false,&quot;msg&quot;:&quot;手机验证码不正确!&quot;}','','roleName 参数值请使用英文的角色名，注册用户即拥有该角色。调用该接口请先获取手机验证码','0','用户注册'),
-	('45fa62a43e0f4570890d701c59258217','post','http://localhost:8080/jeeplus/a/iim/contact/deleteFriend;JSESSIONID=21a65e45a78f415c9c21f9376df9c1d3?__ajax','friendName=用户登录名','','','','0','删除常用联系人'),
-	('48418888f8d7469c8460e7ff48e33673','post','http://localhost:8080/jeeplus/a/login?__ajax','username=admin&amp;password=admin&amp;mobileLogin=true','{&quot;username&quot;:&quot;thinkgem&quot;,&quot;name&quot;:&quot;admin&quot;,&quot;mobileLogin&quot;:true,&quot;JSESSIONID&quot;:&quot;bc2587ecbc9c454c923232cbdb69da2a&quot;,&quot;success&quot;:true,&quot;msg&quot;:&quot;登录成功!&quot;}','','','0','登录'),
-	('54cdba711dec4aadb80e8ecf7f450f4c','get','http://192.168.1.100:8080/HeartCare/a/sys/user/validateLoginName?loginName=thinkgem','','true','false','用户名在数据库中已存在，返回false','1','用户名是否已经被注册'),
-	('5ed6916a54b94acd899373f7d5ec2912','post','http://localhost:8080/jeeplus/a/sys/user/imageUpload;JSESSIONID=21a65e45a78f415c9c21f9376df9c1d3?__ajax','file','','','请使用multipart类型','0','上传头像'),
-	('64b77cbdf2044070ae6f6c09785754a4','get','http://192.168.1.100:8080/HeartCare/a/sys/user/validateMobile?mobile=18951655371','','true','false','手机号已被注册时，返回false，可用返回true.','1','手机号是否已被注册'),
-	('9a8a0b374df24714a485d3b18c9ebc56','post','http://localhost:8080/HeartCare/a/login?__ajax','username=thinkgem&amp;password=admin&amp;clientLogin=true','','','','1','C#客户端登录'),
-	('a9d14c5d30be405fb34d64eb0c2c0818','get','http://localhost:8080/jeeplus/a/sys/user/resetPassword?mobile=18951655371','','','','参数是手机号，手机会收到新的密码。','0','重置密码'),
-	('af79dec2a3134632a8b6f1b363c9aba9','get','http://localhost:8080/jeeplus/a/sys/user/infoData;JSESSIONID=21a65e45a78f415c9c21f9376df9c1d3?__ajax=true&amp;mobileLogin=true','','','{&quot;error&quot;:&quot;0&quot;,&quot;msg&quot;:&quot;没有登录&quot;}','JSESSIONID是登录成功后返回的JSESSIONID','0','获取登录用户信息'),
-	('e94c27c961a44212b584dd04c6352adf','get','http://localhost:8080/jeeplus/a/sys/register/getRegisterCode?mobile=18951655371','','','{&quot;success&quot;:false,&quot;msg&quot;:&quot;因未知原因导致短信发送失败，请联系管理员。&quot;}','','0','短信接口'),
-	('fcd8bddd2f2c4f5d9e333cb014f1938b','get','http://192.168.1.100:8080/HeartCare/a/logout;JSESSIONID=b6b486a8919e4fc196358e10b6a82a2b?__ajax=true','','1  {&quot;success&quot;:&quot;1&quot;,&quot;msg&quot;:&quot;退出成功&quot;}','','','0','退出');
-
-
-DROP TABLE IF EXISTS `test_line_weather_main_city`;
-
-CREATE TABLE `test_line_weather_main_city` (
-  `id` varchar(64) NOT NULL DEFAULT '' COMMENT '主键',
-  `create_by` varchar(64) DEFAULT NULL COMMENT '创建者',
-  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
-  `remarks` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '备注信息',
-  `del_flag` varchar(64) DEFAULT NULL COMMENT '逻辑删除标记（0：显示；1：隐藏）',
-  `datestr` datetime DEFAULT NULL COMMENT '日期',
-  `beijing_maxtemp` double DEFAULT NULL COMMENT '北京最高气温',
-  `beijing_mintemp` double DEFAULT NULL COMMENT '北京最低气温',
-  `changchun_maxtemp` double DEFAULT NULL COMMENT '长春最高气温',
-  `changchun_mintemp` double DEFAULT NULL COMMENT '长春最低气温',
-  `shenyang_maxtemp` double DEFAULT NULL COMMENT '沈阳最高气温',
-  `shenyang_mintemp` double DEFAULT NULL COMMENT '沈阳最低气温',
-  `haerbin_maxtemp` double DEFAULT NULL COMMENT '哈尔滨最高气温',
-  `haerbin_mintemp` double DEFAULT NULL COMMENT '哈尔滨最低气温',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='城市气温';
-
-
-INSERT INTO `test_line_weather_main_city` (`id`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`, `datestr`, `beijing_maxtemp`, `beijing_mintemp`, `changchun_maxtemp`, `changchun_mintemp`, `shenyang_maxtemp`, `shenyang_mintemp`, `haerbin_maxtemp`, `haerbin_mintemp`)
-VALUES
-	('a96a31b3648c4be297d0f00ff5599a9f','1','2016-06-02 21:17:18','1','2016-06-02 21:17:18',NULL,'0','2016-06-22 00:00:00',36,18,36,20,16,20,10,8),
-	('ba1a98106bd44a9ebbfd0b90dd3f89e5','1','2016-06-02 21:21:56','1','2016-06-02 21:21:56',NULL,'0','2016-06-30 00:00:00',24,12,36,18,25,24,12,8),
-	('fa1d274c07b744ee870518e79f817ba6','1','2016-06-02 21:16:54','1','2016-06-02 21:16:54',NULL,'0','2016-06-28 00:00:00',32,12,23,10,60,25,10,2);
-
-
-DROP TABLE IF EXISTS `test_pie_class`;
-
-CREATE TABLE `test_pie_class` (
-  `id` varchar(64) NOT NULL DEFAULT '' COMMENT '主键',
-  `create_by` varchar(64) DEFAULT NULL COMMENT '创建者',
-  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
-  `del_flag` varchar(64) DEFAULT NULL COMMENT '逻辑删除标记（0：显示；1：隐藏）',
-  `class_name` varchar(64) CHARACTER SET utf8 DEFAULT NULL COMMENT '班级',
-  `num` int(11) DEFAULT NULL COMMENT '人数',
-  `remarks` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '备注信息',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='班级';
-
-
-INSERT INTO `test_pie_class` (`id`, `create_by`, `create_date`, `update_by`, `update_date`, `del_flag`, `class_name`, `num`, `remarks`)
-VALUES
-	('19141118ea9e46c6b35d8baeb7f3fe94','1','2016-05-26 21:29:26','1','2016-05-26 21:35:06','0','2班',22,'11'),
-	('42b3824ef5dc455e917a3b1f6a8c1108','1','2016-05-26 21:35:26','1','2016-06-02 21:00:10','0','3班',123,''),
-	('49812602ff9445e99219b0d02719dbc1','1','2016-05-26 21:29:33','1','2016-05-26 21:35:00','0','1班',44,'44');

@@ -1,4 +1,4 @@
-package com.easyorder.common;
+package com.easyorder.common.entity;
 
 import java.util.Date;
 

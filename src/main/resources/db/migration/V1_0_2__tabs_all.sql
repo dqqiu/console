@@ -7,6 +7,7 @@ CREATE TABLE supplier(
 	name varchar(50) NOT NULL COMMENT '供货商名称',
 	supplier_no varchar(50) NOT NULL COMMENT '供货商编号',
 	logo_picture_url varchar(255) COMMENT '供货商logo图片地址',
+	manager_id varchar(255) COMMENT '供货商管理员ID',
 	description varchar(300) COMMENT '简述',
 	create_by VARCHAR(50) NOT NULL COMMENT '创建人',
 	create_date DATETIME NOT NULL COMMENT '创建时间',
